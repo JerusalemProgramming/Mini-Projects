@@ -1,0 +1,195 @@
+<!-- HTML5 Drag and Drop Files -->
+<!-- PLEASE VISIT OUR WEB SITES (OUR PROBLEM-SOLVING PROGRAMMING, CODING, & DEVELOPMENT SERVICES ARE AVAILABLE FOR HIRE): -->
+<!-- www.JerusalemProgrammer.com -->
+<!-- www.JerusalemProgrammers.com -->
+<!-- www.JerusalemProgramming.com -->
+
+<!DOCTYPE html>
+<!-- BEGIN HTML -->
+<html lang="en">
+<!-- BEGIN HEAD -->
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Front End Developer Mini Project - HTML5 Drag and Drop Files</title>
+  
+  <!-- BEGIN LINK TO MATERIALIZE CSS STYLE SHEET -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- END LINK TO MATERIALIZE CSS STYLE SHEET -->
+
+  <!-- BEGIN LINK TO MATERIALIZE CSS JAVASCRIPT -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- END LINK TO MATERIALIZE CSS JAVASCRIPT -->       
+  
+  <!-- BEGIN STYLE --> 
+  <style>
+    .boxed {
+      width: 250px;
+      height: 250px;
+      background-color: red;
+      position: absolute;
+      top:0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+	
+	#textbox {
+	  height: 100%;
+	  width: 100%;
+	  border: 3px solid black;
+	  position: absolute;
+	}
+  </style>
+  <!-- END STYLE -->
+</head>
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+<body>
+<!-- 
+FrontEnd Stack Developer Mini Project - HTML5 Drag and Drop Files
+
+Thanks for applying.  We thank you for your time and attention.
+
+To make sure it is a good fit for both sides, we really encourage all of our candidates
+to attempt a small mini project to showcase your abilities in addition to your resume.
+
+This project should typically take less than 30 minutes to complete.
+
+Please send completed file back along with the submitted form.
+
+// DESCRIPTION: DRAG-N-DROP enabler
+// This html page has a single div element dndbox. 
+// Your objective is to write apply CSS style to this box "dndbox" and add javascript code to enable drag-n-drop functionality for this element.
+//1) CSS: Style the dndbox such that it appears as a square box at the center of the page.
+//2) Javascript: You should create an inline javascript code that will add drag-n-drop feature such that:
+- upon dragging and dropping file(s) on the box, a message should be displayed saying "Got X file(s)", where X is the number of files dropped.
+- upon dropping any other items, a message should be displayed saying "Not a file".
+
+-->
+
+<!-- BEGIN DIV FOR DNDBOX -->
+<div id="dndbox" class="hoverable boxed" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+  <div id="textbox" class="white-text center">
+	<p><strong>Drop Files Here</strong></p>
+  </div>
+</div>
+<!-- END DIV FOR DNDBOX -->
+
+<!-- BEGIN JAVASCRIPT -->
+<script language="javascript">
+// BEGIN DEFINE FUNCTIONS
+// BEGIN DEFINE FUNCTIONS
+// BEGIN DEFINE FUNCTIONS
+
+// BEGIN DEFINE FUNCTION #1 - dragOverHandler(event)
+function dragOverHandler(event) {
+  
+  // PRINT TEST OUTPUT TO CONSOLE
+  console.log('EVENT TRIGGERED:  FUNCTION #1 CALLED:  dragOverHandler(); File(s) in drop zone'); 
+
+  // PREVENT DEFAULT BEHAVIOR: (PREVENT FILE FROM BEING OPENED)
+  event.preventDefault();
+} // END DEFINE FUNCTION #1 - dragOverHandler(event)
+
+// BEGIN DEFINE FUNCTION #2 - dropHandler(event)
+function dropHandler(event) {
+
+  // PRINT TEST OUTPUT TO CONSOLE
+  console.log('EVENT TRIGGERED:  FUNCTION #2 CALLED:  dropHandler(); File(s) dropped');
+  
+  // PREVENT DEFAULT BEHAVIOR (PREVENT FILE FROM BEING OPENED)
+  event.preventDefault();
+
+  // BEGIN MAIN IF CONDITION:  IF EVENT OF DATA TRANSFER CONTAINS ITEMS...
+  if (event.dataTransfer.items) {
+  
+    // BEGIN FOR LOOP:  LOOP THROUGH ITEMS
+    for (var i = 0; i < event.dataTransfer.items.length; i++) {
+	
+	  // PRINT TEST OUTPUT TO CONSOLE
+	  console.log('event.dataTransfer.items.length = ' + event.dataTransfer.items.length);
+	  console.log('event.dataTransfer.types = ' + event.dataTransfer.types);
+	  
+	  // BEGIN secondary IF CONDITION:  IF EACH DROPPED ITEM IS OF KIND FILE, THEN...
+      if (event.dataTransfer.items[i].kind === 'file') {
+	
+		// ASSIGN EACH FILE TO FILE VARIABLE
+        var file = event.dataTransfer.items[i].getAsFile();
+		
+		// ASSIGN LENGTH (COUNT) OF NUMBER OF ITEMS THAT WERE DRAGGED & DROPPED
+		var itemCount = event.dataTransfer.items.length;
+		
+		// ASSIGN EACH DETERMINED KIND/TYPE OF OBJECT TO VARIABLE
+		var itemKind = event.dataTransfer.items[i].kind;
+		
+		// ASSIGN EACH DETERMINED TYPE OF OBJECT TO VARIABLE
+		var itemTypes = event.dataTransfer.types[i];
+		
+		// PRINT TEST OUTPUT TO CONSOLE
+        console.log('TEST secondary IF CONDITION... file[' + i + '].name = ' + file.name);
+		console.log('TEST secondary IF CONDITION... event.dataTransfer.items.length = ' + itemCount);
+		console.log('TEST secondary IF CONDITION... event.dataTransfer.items[i].kind = ' + itemKind);
+		console.log('TEST secondary IF CONDITION... event.dataTransfer.types[i] = ' + itemTypes);
+		
+		// PRINT TEST ALERT MESSAGE TO USER OF EACH FILE NAME
+		//alert('TEST secondary IF CONDITION... file[' + i + '].name = ' + file.name);
+		
+	  } // END secondary IF CONDITION:  IF EACH DROPPED ITEM IS OF KIND FILE, THEN...
+	  
+	  // BEGIN secondary ELSE IF CONDITION:  ELSE IF DROPPED ITEMS AREN'T FILES, THEN REJECT THEM...
+	  else if (event.dataTransfer.items[i].kind !== 'file') {
+        
+	    // PRINT TEST OUTPUT TO CONSOLE
+        console.log('TEST (secondary) ELSE IF CONDITION...');
+	  
+	  } // END secondary ELSE IF CONDITION:  ELSE IF DROPPED ITEMS AREN'T FILES, THEN REJECT THEM...
+	  
+      // BEGIN secondary ELSE CONDITION:  OTHERWISE SOMETHING ELSE HAS OCCURRED...	  
+      else {
+	  
+		// PRINT TEST OUTPUT TO CONSOLE and ALERT BOX
+		console.log('TEST (secondary) ELSE CONDITION...Something Else Has Occurred');
+		alert('TEST (secondary) ELSE CONDITION...Something Else Has Occurred');
+	
+	  }
+	  // END secondary ELSE CONDITION:  OTHERWISE SOMETHING ELSE HAS OCCURRED...
+
+    } // END FOR LOOP:  LOOP THROUGH ITEMS
+	
+	// BEGIN IF / ELSE CONDITION:  CHECK IF itemCount IS UNDEFINED / NULL
+  	if (itemCount != null) {
+	
+	  // PRINT ALERT MESSAGE TO USER WITH NUMBER OF FILES
+	  alert('Got ' + itemCount + ' file(s)');
+	
+	} else {
+	
+	  // PRINT ALERT MESSAGE TO USER
+	  alert('Not a File');
+	
+	} // END BEGIN IF / ELSE CONDITION:  CHECK IF itemCount IS UNDEFINED / NULL
+	
+  } // END MAIN IF CONDITION:  IF EVENT OF DATA TRANSFER CONTAINS ITEMS...
+  
+} // END DEFINE FUNCTION #2 - dropHandler(event)
+
+// END DEFINE FUNCTIONS
+// END DEFINE FUNCTIONS
+// END DEFINE FUNCTIONS
+</script>
+<!-- END JAVASCRIPT -->
+</body>
+<!-- END BODY -->
+</html>
+<!-- END HTML-->
+
+<!-- WE HOPE YOU ENJOYED AND THAT THIS HELPS YOUR UNDERSTANDING OF WEB SITE PROGRAMMING AND DEVELOPMENT -->
+<!-- PLEASE COME BACK AGAIN SOON -->
+<!-- PLEASE VISIT OUR WEB SITES (OUR PROBLEM-SOLVING PROGRAMMING, CODING, & DEVELOPMENT SERVICES ARE AVAILABLE FOR HIRE): -->
+<!-- www.JerusalemProgrammer.com -->
+<!-- www.JerusalemProgrammers.com -->
+<!-- www.JerusalemProgramming.com -->
