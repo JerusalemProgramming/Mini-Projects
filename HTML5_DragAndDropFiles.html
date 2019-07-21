@@ -36,12 +36,12 @@
       margin: auto;
     }
 	
-	#textbox {
-	  height: 100%;
-	  width: 100%;
-	  border: 3px solid black;
-	  position: absolute;
-	}
+    #textbox {
+      height: 100%;
+      width: 100%;
+      border: 3px solid black;
+      position: absolute;
+    }
   </style>
   <!-- END STYLE -->
 </head>
@@ -81,22 +81,22 @@ Please send completed file back along with the submitted form.
 
 <!-- BEGIN JAVASCRIPT -->
 <script language="javascript">
-// BEGIN DEFINE FUNCTIONS
-// BEGIN DEFINE FUNCTIONS
-// BEGIN DEFINE FUNCTIONS
+  // BEGIN DEFINE FUNCTIONS
+  // BEGIN DEFINE FUNCTIONS
+  // BEGIN DEFINE FUNCTIONS
 
-// BEGIN DEFINE FUNCTION #1 - dragOverHandler(event)
-function dragOverHandler(event) {
+  // BEGIN DEFINE FUNCTION #1 - dragOverHandler(event)
+  function dragOverHandler(event) {
   
   // PRINT TEST OUTPUT TO CONSOLE
   console.log('EVENT TRIGGERED:  FUNCTION #1 CALLED:  dragOverHandler(); File(s) in drop zone'); 
 
   // PREVENT DEFAULT BEHAVIOR: (PREVENT FILE FROM BEING OPENED)
   event.preventDefault();
-} // END DEFINE FUNCTION #1 - dragOverHandler(event)
+  } // END DEFINE FUNCTION #1 - dragOverHandler(event)
 
-// BEGIN DEFINE FUNCTION #2 - dropHandler(event)
-function dropHandler(event) {
+  // BEGIN DEFINE FUNCTION #2 - dropHandler(event)
+  function dropHandler(event) {
 
   // PRINT TEST OUTPUT TO CONSOLE
   console.log('EVENT TRIGGERED:  FUNCTION #2 CALLED:  dropHandler(); File(s) dropped');
@@ -110,68 +110,67 @@ function dropHandler(event) {
     // BEGIN FOR LOOP:  LOOP THROUGH ITEMS
     for (var i = 0; i < event.dataTransfer.items.length; i++) {
 	
-	  // PRINT TEST OUTPUT TO CONSOLE
-	  console.log('event.dataTransfer.items.length = ' + event.dataTransfer.items.length);
-	  console.log('event.dataTransfer.types = ' + event.dataTransfer.types);
+      // PRINT TEST OUTPUT TO CONSOLE
+      console.log('event.dataTransfer.items.length = ' + event.dataTransfer.items.length);
+      console.log('event.dataTransfer.types = ' + event.dataTransfer.types);
 	  
-	  // BEGIN secondary IF CONDITION:  IF EACH DROPPED ITEM IS OF KIND FILE, THEN...
+      // BEGIN secondary IF CONDITION:  IF EACH DROPPED ITEM IS OF KIND FILE, THEN...
       if (event.dataTransfer.items[i].kind === 'file') {
 	
-		// ASSIGN EACH FILE TO FILE VARIABLE
-        var file = event.dataTransfer.items[i].getAsFile();
+      // ASSIGN EACH FILE TO FILE VARIABLE
+      var file = event.dataTransfer.items[i].getAsFile();
 		
-		// ASSIGN LENGTH (COUNT) OF NUMBER OF ITEMS THAT WERE DRAGGED & DROPPED
-		var itemCount = event.dataTransfer.items.length;
+      // ASSIGN LENGTH (COUNT) OF NUMBER OF ITEMS THAT WERE DRAGGED & DROPPED
+      var itemCount = event.dataTransfer.items.length;
 		
-		// ASSIGN EACH DETERMINED KIND/TYPE OF OBJECT TO VARIABLE
-		var itemKind = event.dataTransfer.items[i].kind;
+	    // ASSIGN EACH DETERMINED KIND/TYPE OF OBJECT TO VARIABLE
+	    var itemKind = event.dataTransfer.items[i].kind;
 		
-		// ASSIGN EACH DETERMINED TYPE OF OBJECT TO VARIABLE
-		var itemTypes = event.dataTransfer.types[i];
+	    // ASSIGN EACH DETERMINED TYPE OF OBJECT TO VARIABLE
+	    var itemTypes = event.dataTransfer.types[i];
 		
-		// PRINT TEST OUTPUT TO CONSOLE
-        console.log('TEST secondary IF CONDITION... file[' + i + '].name = ' + file.name);
-		console.log('TEST secondary IF CONDITION... event.dataTransfer.items.length = ' + itemCount);
-		console.log('TEST secondary IF CONDITION... event.dataTransfer.items[i].kind = ' + itemKind);
-		console.log('TEST secondary IF CONDITION... event.dataTransfer.types[i] = ' + itemTypes);
-		
-		// PRINT TEST ALERT MESSAGE TO USER OF EACH FILE NAME
-		//alert('TEST secondary IF CONDITION... file[' + i + '].name = ' + file.name);
-		
-	  } // END secondary IF CONDITION:  IF EACH DROPPED ITEM IS OF KIND FILE, THEN...
-	  
-	  // BEGIN secondary ELSE IF CONDITION:  ELSE IF DROPPED ITEMS AREN'T FILES, THEN REJECT THEM...
-	  else if (event.dataTransfer.items[i].kind !== 'file') {
-        
 	    // PRINT TEST OUTPUT TO CONSOLE
+            console.log('TEST secondary IF CONDITION... file[' + i + '].name = ' + file.name);
+	    console.log('TEST secondary IF CONDITION... event.dataTransfer.items.length = ' + itemCount);
+	    console.log('TEST secondary IF CONDITION... event.dataTransfer.items[i].kind = ' + itemKind);
+            console.log('TEST secondary IF CONDITION... event.dataTransfer.types[i] = ' + itemTypes);
+		
+	    // PRINT TEST ALERT MESSAGE TO USER OF EACH FILE NAME
+            //alert('TEST secondary IF CONDITION... file[' + i + '].name = ' + file.name);
+		
+      } // END secondary IF CONDITION:  IF EACH DROPPED ITEM IS OF KIND FILE, THEN...
+	  
+      // BEGIN secondary ELSE IF CONDITION:  ELSE IF DROPPED ITEMS AREN'T FILES, THEN REJECT THEM...
+      else if (event.dataTransfer.items[i].kind !== 'file') {
+        
+        // PRINT TEST OUTPUT TO CONSOLE
         console.log('TEST (secondary) ELSE IF CONDITION...');
 	  
-	  } // END secondary ELSE IF CONDITION:  ELSE IF DROPPED ITEMS AREN'T FILES, THEN REJECT THEM...
+      } // END secondary ELSE IF CONDITION:  ELSE IF DROPPED ITEMS AREN'T FILES, THEN REJECT THEM...
 	  
       // BEGIN secondary ELSE CONDITION:  OTHERWISE SOMETHING ELSE HAS OCCURRED...	  
       else {
 	  
-		// PRINT TEST OUTPUT TO CONSOLE and ALERT BOX
-		console.log('TEST (secondary) ELSE CONDITION...Something Else Has Occurred');
-		alert('TEST (secondary) ELSE CONDITION...Something Else Has Occurred');
+        // PRINT TEST OUTPUT TO CONSOLE and ALERT BOX
+	console.log('TEST (secondary) ELSE CONDITION...Something Else Has Occurred');
+	alert('TEST (secondary) ELSE CONDITION...Something Else Has Occurred');
 	
-	  }
-	  // END secondary ELSE CONDITION:  OTHERWISE SOMETHING ELSE HAS OCCURRED...
+      } // END secondary ELSE CONDITION:  OTHERWISE SOMETHING ELSE HAS OCCURRED...
 
     } // END FOR LOOP:  LOOP THROUGH ITEMS
 	
-	// BEGIN IF / ELSE CONDITION:  CHECK IF itemCount IS UNDEFINED / NULL
-  	if (itemCount != null) {
+    // BEGIN IF / ELSE CONDITION:  CHECK IF itemCount IS UNDEFINED / NULL
+    if (itemCount != null) {
 	
-	  // PRINT ALERT MESSAGE TO USER WITH NUMBER OF FILES
-	  alert('Got ' + itemCount + ' file(s)');
+    // PRINT ALERT MESSAGE TO USER WITH NUMBER OF FILES
+    alert('Got ' + itemCount + ' file(s)');
 	
-	} else {
+    } else {
 	
-	  // PRINT ALERT MESSAGE TO USER
-	  alert('Not a File');
+    // PRINT ALERT MESSAGE TO USER
+    alert('Not a File');
 	
-	} // END BEGIN IF / ELSE CONDITION:  CHECK IF itemCount IS UNDEFINED / NULL
+    } // END BEGIN IF / ELSE CONDITION:  CHECK IF itemCount IS UNDEFINED / NULL
 	
   } // END MAIN IF CONDITION:  IF EVENT OF DATA TRANSFER CONTAINS ITEMS...
   
